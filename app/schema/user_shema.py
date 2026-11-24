@@ -1,18 +1,22 @@
-from pydantic import BaseModel, ConfigDict, EmailStr
+
+from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 class UserBase(BaseModel):
-    username: str
+    username: str = Field(min_length=3, max_length=50)
+    password: str = Field(min_length=4)
+class UserCreate(UserBase):
     email: EmailStr
+
+
+class UserLogin(BaseModel):
+    email: str
     password: str
 
 
-class UserCreate(UserBase):
-    pass
-
 class UserUpdate(BaseModel):
-    username: str | None = None
+    username: str | None = Field(default=None, min_length=3, max_length=50)
     email: EmailStr | None = None
-    password: str | None = None
+    password: str | None = Field(default=None, min_length=8)
 
 
 class UserResponse(BaseModel):
@@ -21,3 +25,9 @@ class UserResponse(BaseModel):
     email: EmailStr
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class AuthResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    user: UserResponse

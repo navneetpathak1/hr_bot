@@ -12,8 +12,11 @@ dependencies = [
     "asyncpg>=0.32.0",
     "fastapi[standard]>=0.165.0",
     "psycopg>=3.3.9",
+    "pwdlib[argon2]>=0.4.2",
     "pydentic>=0.0.1.dev3",
+    "pyjwt>=2.15.1",
     "python-dotenv>=1.2.4",
+    "python-multipart>=0.0.34",
     "sqlalchemy[asyncio]>=2.1.9",
 ]
 

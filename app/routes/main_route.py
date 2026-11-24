@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from config.database import engine
+from app.config.database import engine
 from . import user_route
 from contextlib import asynccontextmanager # db
 
