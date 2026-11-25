@@ -15,7 +15,7 @@ async def lifespan(_app: FastAPI):
     yield
     await engine.dispose()
 
-    
+     
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(user_route.router, prefix="/api/v1", tags=["Users"])
@@ -61,3 +61,4 @@ async def custom_http_exception_handler(
         }
     )
 
+#  uv run fastapi dev .\app\routes\main_route.py 

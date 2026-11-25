@@ -5,6 +5,7 @@ from langchain_core.messages import HumanMessage
 from .user_route import get_current_user
 from app.models.user_models import User
 from app.graph.workflow import rag_app
+from app.PII.imports_PII import extract_pii
 
 router = APIRouter()
 
@@ -19,6 +20,20 @@ async def query_endpoint(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Query cannot be empty"
         )
+
+    pii_result = extract_pii(query)
+
+    if pii_result:
+        return {
+            "question": query,
+            "rewritten_question": None,
+            "answer": (
+                "Sensitive information detected. "
+                "Please remove sensitive information and try again."
+            ),
+            "citations": []
+        }
+
 
     thread_id = f"user_{current_user.id}"
     config = {"configurable": {"thread_id": thread_id}}

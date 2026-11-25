@@ -14,7 +14,7 @@ load_dotenv()
 JWT_SECRET = os.getenv("JWT_SECRET")
 JWT_ALGO = os.getenv("JWT_ALGO")
 
-from app.schema.user_shema import UserCreate, UserLogin, AuthResponse
+from app.schema.user_shema import UserCreate, AuthResponse
 from app.models.user_models import User
 from app.config.database import get_db
 import jwt
@@ -168,3 +168,5 @@ async def profile(
         "username": current_user.username,
         "email": current_user.email
     }
+
+# chat block
