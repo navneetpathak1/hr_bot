@@ -13,7 +13,7 @@ MAX_RETRIES = 2
 
 
 def route_after_retrieve(state: State) -> str:
-    """Retry retrieval on transient failure, otherwise proceed to rerank."""
+    """Retry retrieval on transient failure, otherwise proceed to rerank or generate."""
     if state.get("error") and state.get("retry_count", 0) < MAX_RETRIES:
         return "retry"
     if not state.get("retrieved_documents"):
@@ -21,7 +21,7 @@ def route_after_retrieve(state: State) -> str:
     return "rerank"
 
 
-def build_rag_graph():
+def build_rag_graph(checkpointer=None):
     workflow = StateGraph(State)
 
     # Register nodes
@@ -47,6 +47,12 @@ def build_rag_graph():
     workflow.add_edge("rerank", "generate")
     workflow.add_edge("generate", END)
 
-    # Attach in-memory checkpointer for conversation persistence
-    memory = MemorySaver()
-    return workflow.compile(checkpointer=memory)
+    # Attach checkpointer for conversation persistence
+    if checkpointer is None:
+        checkpointer = MemorySaver()
+    return workflow.compile(checkpointer=checkpointer)
+
+
+# Shared singleton for persistent conversation memory
+memory = MemorySaver()
+rag_app = build_rag_graph(checkpointer=memory)

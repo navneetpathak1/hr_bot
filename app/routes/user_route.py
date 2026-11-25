@@ -86,7 +86,7 @@ async def login(username: Annotated[str, Form()],
         select(User).where(
             or_(
                 User.username == username,
-                User.email == password
+                User.email == username
             )
         )
         )

@@ -11,7 +11,7 @@ from app.config.embedding import embeddings
 load_dotenv()
 
 CONNECTION_STRING = os.getenv("CONNECTION_STRING")
-COLLECTION_NAME = "state_of_union_vector"
+COLLECTION_NAME = os.getenv("COLLECTION_NAME")
 
 if not CONNECTION_STRING:
     raise ValueError("CONNECTION_STRING is missing from .env")
@@ -35,8 +35,10 @@ def init_db() -> None:
             )
         """))
 
+BASE_DIR = Path(__file__).resolve().parents[2]
+DATA_FOLDER = BASE_DIR / "data"
 
-def ingest_files(data_folder: Path, vector_store: PGVector = db) -> None:
+def ingest_files(data_folder: Path = DATA_FOLDER, vector_store: PGVector = db) -> None:
     """Load, chunk, and store new PDF/TXT files into PGVector."""
     if not data_folder.exists():
         raise FileNotFoundError(f"Folder not found: {data_folder}")

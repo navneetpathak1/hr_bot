@@ -7,12 +7,10 @@ from flashrank import Ranker, RerankRequest
 from app.schema.state import State
 from app.config.llm import llm
 from app.Ingestion_Pipeline.ingestion import db
-
+from app.prompt.prompt import HR_PROMPT
 # Initialize FlashRank once at module level
 ranker = Ranker(model_name="ms-marco-MiniLM-L-12-v2")
 
-
-# Optional: Tool wrapper if you bind tools to an LLM agent later
 @tool
 def search_knowledge_base(query: str) -> str:
     """Search and rerank documents from the vector database for a given query."""
@@ -34,20 +32,29 @@ def rewrite_query_node(state: State) -> Dict[str, Any]:
     if len(history) <= 1:
         return {"rewritten_question": question, "error": None}
 
+    history_text = "\n".join(
+        f"{'User' if isinstance(m, HumanMessage) else 'Assistant'}: {m.content}"
+        for m in history[:-1]
+    )
+
     prompt = ChatPromptTemplate.from_messages([
         (
             "system",
-            "Rewrite the user's latest question into a standalone search query using the chat history. "
-            "Do not answer the question—only return the improved query."
+            "You are a query rewriting assistant. Given a chat history and the user's latest follow-up question, "
+            "rewrite the question into a single, concise standalone search query for document retrieval. "
+            "Do not answer the question. Return ONLY the rewritten query without quotes or preamble."
         ),
-        ("placeholder", "{history}"),
-        ("human", "{question}"),
+        (
+            "human",
+            f"Chat History:\n{history_text}\n\nFollow-up question: {question}\n\nStandalone search query:"
+        ),
     ])
 
     try:
         chain = prompt | llm
-        response = chain.invoke({"history": history[:-1], "question": question})
-        return {"rewritten_question": response.content.strip(), "error": None}
+        response = chain.invoke({})
+        rewritten = response.content.strip()
+        return {"rewritten_question": rewritten if rewritten else question, "error": None}
     except Exception as e:
         return {"rewritten_question": question, "error": str(e)}
 
@@ -61,7 +68,7 @@ def retrieve_node(state: State) -> Dict[str, Any]:
         docs = db.similarity_search(query=query, k=10)
         return {
             "retrieved_documents": docs,
-            "error": None if docs else "No documents found.",
+            "error": None,
         }
     except Exception as e:
         return {
@@ -77,7 +84,7 @@ def rerank_node(state: State) -> Dict[str, Any]:
     retrieved_docs = state.get("retrieved_documents", [])
 
     if not retrieved_docs:
-        return {"context": "", "citations": [], "error": "No documents to rerank."}
+        return {"context": "", "citations": [], "error": None}
 
     try:
         passages = [
@@ -110,7 +117,22 @@ def rerank_node(state: State) -> Dict[str, Any]:
             "error": None,
         }
     except Exception as e:
-        return {"error": f"Reranking failed: {e}"}
+        top_docs = retrieved_docs[:4]
+        context_parts = []
+        citations = []
+        for idx, doc in enumerate(top_docs, start=1):
+            source = doc.metadata.get("source", "Unknown source")
+            page = doc.metadata.get("page", "N/A")
+            citation = f"[{idx}] Source: {source}, Page: {page}"
+            context_parts.append(f"{doc.page_content}\nCitation: {citation}")
+            citations.append(citation)
+
+        return {
+            "retrieved_documents": top_docs,
+            "context": "\n\n".join(context_parts),
+            "citations": citations,
+            "error": f"Reranking failed: {e}",
+        }
 
 
 def generate_answer_node(state: State) -> Dict[str, Any]:
@@ -124,25 +146,22 @@ def generate_answer_node(state: State) -> Dict[str, Any]:
         return {
             "answer": fallback,
             "messages": [AIMessage(content=fallback)],
+            "error": None,
         }
 
     prompt = ChatPromptTemplate.from_messages([
+        ("system", HR_PROMPT),
         (
-            "system",
-            """You are a helpful RAG assistant.
-                Answer the user's question using ONLY the provided context.
-                If the answer is not available in the context, clearly say that you don't have enough information.
-
-                IMPORTANT:
-                - Add inline citations for factual claims using [1], [2], etc.
-                - Only cite sources provided in the context.
-                - Do not invent citations.
-
-                Context:
-                {context}"""
-                        ),
-                        ("human", "{question}"),
-                    ])
+            "human",
+            "<COMPANY_POLICY_CONTEXT>\n"
+            "{context}\n"
+            "</COMPANY_POLICY_CONTEXT>\n\n"
+            "<EMPLOYEE_QUESTION>\n"
+            "{question}\n"
+            "</EMPLOYEE_QUESTION>\n\n"
+            "Answer:"
+        ),
+    ])
 
     try:
         chain = prompt | llm
