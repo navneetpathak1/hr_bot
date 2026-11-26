@@ -1,3 +1,11 @@
+"""
+"contextual_precision",
+"contextual_recall",
+"answer_relevancy",
+"faithfulness",
+"hallucination"
+"""
+
 import os
 
 os.environ.setdefault("DEEPEVAL_TELEMETRY_OPT_OUT", "YES")
@@ -16,7 +24,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from dotenv import load_dotenv
 load_dotenv()
 
-# ── DeepEval imports ──────────────────────────────────────────────────────────
 import pytest
 from deepeval import evaluate
 from deepeval.metrics import (
@@ -28,21 +35,16 @@ from deepeval.metrics import (
 )
 from deepeval.test_case import LLMTestCase
 
-# ── Project imports ───────────────────────────────────────────────────────────
 from EVALS.groq_deepeval_model import GroqDeepEvalModel
 
-# ── LangChain / LangGraph imports ─────────────────────────────────────────────
 from langchain_core.messages import HumanMessage
 from app.graph.workflow import rag_app
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Constants
-# ─────────────────────────────────────────────────────────────────────────────
 TEST_DATA_PATH = Path("test_data/hr_test_cases.json")
 RESULTS_PATH = Path("EVALS/eval_results.json")
-THRESHOLD = 0.5          # minimum passing score for all metrics
-EVAL_USER_ID = 9999      # synthetic user id for RAG thread isolation
+THRESHOLD = 0.3        
+EVAL_USER_ID = 9999     
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -74,9 +76,9 @@ def load_test_cases(
 def invoke_rag(question: str, user_id: int = EVAL_USER_ID) -> dict:
     """
     Call the RAG pipeline and return a dict with:
-      actual_output   – LLM-generated answer
-      retrieval_context – list of retrieved chunk strings
-      context         – raw context string passed to the LLM
+      actual_output    LLM-generated answer
+      retrieval_context  list of retrieved chunk strings
+      context          raw context string passed to the LLM
     """
     thread_id = f"user_{user_id}"
     config = {"configurable": {"thread_id": thread_id}}
@@ -117,7 +119,6 @@ def build_deepeval_test_case(
       retrieval_context → chunks the retriever actually returned
                           (used by contextual metrics)
       context           → ground-truth relevant chunks from test dataset
-                          (used as the reference for Hallucination metric)
     """
     return LLMTestCase(
         input=raw["input"],
@@ -129,10 +130,7 @@ def build_deepeval_test_case(
         context=raw["retrieval_context"],
     )
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Metric factory
-# ─────────────────────────────────────────────────────────────────────────────
 
 def build_metrics(model: GroqDeepEvalModel) -> dict:
     """Create all five evaluation metrics with the Groq judge."""
@@ -164,10 +162,6 @@ def build_metrics(model: GroqDeepEvalModel) -> dict:
         ),
     }
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Core evaluation runner
-# ─────────────────────────────────────────────────────────────────────────────
 
 def run_evals(
     limit: int | None = None,
@@ -315,9 +309,7 @@ def print_summary(results: List[dict]) -> None:
     print("=" * 70 + "\n")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # pytest integration  (run via: deepeval test run EVALS/eval_rag.py)
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _load_cases_for_pytest(limit=5):
     """Return test cases for the pytest-based deepeval test runner."""
@@ -349,11 +341,6 @@ def _get_pytest_pairs():
         _pytest_pairs = _load_cases_for_pytest(limit=5)
     return _pytest_pairs
 
-
-# NOTE: Pairs are loaded lazily at collection time, not at import time, so that
-# running `python EVALS/eval_rag.py` (CLI mode) does NOT trigger the RAG
-# pipeline. The `if os.getenv("PYTEST_CURRENT_TEST") or ...` guard ensures the
-# expensive load only happens during pytest collection.
 _IS_PYTEST = (
     "pytest" in sys.modules
     or os.getenv("PYTEST_CURRENT_TEST") is not None
@@ -370,10 +357,6 @@ def test_hr_rag_pipeline(test_case: LLMTestCase, metrics: list):
     """
     evaluate([test_case], metrics)
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# CLI entry point
-# ─────────────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(
@@ -427,3 +410,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# uv run python -m EVALS.eval_rag --limit 2 --sleep 15

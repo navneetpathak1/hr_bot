@@ -45,8 +45,6 @@ class GroqDeepEvalModel(DeepEvalBaseLLM):
         self.max_tokens = max_tokens
         self._client: Optional[ChatGroq] = None
 
-    # ── DeepEvalBaseLLM interface ───────────────────────────────────────────
-
     def get_model_name(self) -> str:
         return self.model_name
 
@@ -61,28 +59,16 @@ class GroqDeepEvalModel(DeepEvalBaseLLM):
         return self._client
 
     def generate(self, prompt: str, schema=None):
-        """Synchronous text generation with retry on rate limits.
-
-        Groq rejects requests that contain only a system message.
-        We always send the evaluation prompt as a HumanMessage so the
-        request contains at least one human turn.
-
-        If `schema` is a Pydantic model class, we use LangChain's
-        with_structured_output() to return a typed object directly.
-        DeepEval calls generate(prompt, schema=SomePydanticModel) and
-        expects either a typed object back OR a TypeError to trigger its
-        fallback JSON-parsing path.
+        """Synchronous text generation
         """
         client = self.load_model()
 
         for attempt in range(1, 4):
             try:
-                # Optional inter-request sleep to avoid 429s on free tier
                 if INTER_REQUEST_SLEEP > 0:
                     time.sleep(INTER_REQUEST_SLEEP)
 
                 if schema is not None:
-                    # Use structured output so DeepEval gets a Pydantic object
                     try:
                         structured_client = client.with_structured_output(schema)
                         result = structured_client.invoke(
@@ -90,19 +76,13 @@ class GroqDeepEvalModel(DeepEvalBaseLLM):
                         )
                         return result
                     except (NotImplementedError, ValueError, TypeError):
-                        # Structured output unsupported by this model — fall
-                        # back to plain text so DeepEval parses JSON itself.
                         pass
                     except Exception as struct_exc:
-                        # If it looks like a tool-call format error from Groq,
-                        # fall back to plain text. Otherwise re-raise.
                         err_lower = str(struct_exc).lower()
                         if any(k in err_lower for k in ("tool", "function", "schema", "json")):
                             pass  # fall through to plain text
                         else:
                             raise
-
-                # Plain text generation (schema=None or structured fallback)
                 response = client.invoke([HumanMessage(content=prompt)])
                 return response.content
 
@@ -116,7 +96,6 @@ class GroqDeepEvalModel(DeepEvalBaseLLM):
                     )
                     time.sleep(wait)
                 else:
-                    # Non-rate-limit error — re-raise immediately
                     raise
 
         raise RuntimeError(
