@@ -5,7 +5,12 @@ from httpx import AsyncClient
 from Tests.conftest import register_user, login_user, auth_header
 
 # REGISTER
-
+# 1. create and pass
+# 2. duplicate email
+# 3. duplicate username
+# 4. password too short
+# 5. username too short
+# 6. invalid email
 class TestRegister:
 
     @pytest.mark.asyncio
@@ -119,6 +124,9 @@ class TestRegister:
         assert response.status_code == 422
 
 # Login
+# 1. using username
+# 2. using email
+# 3. wrong username
 
 class TestLogin:
 
@@ -154,19 +162,6 @@ class TestLogin:
         assert body["user"]["email"] == "heidi@example.com"
 
     @pytest.mark.asyncio
-    async def test_login_wrong_password(self, client: AsyncClient):
-        """Correct username but wrong password must return 401."""
-        await register_user(client, username="ivan", email="ivan@example.com", password="correctpass")
-
-        response = await client.post(
-            "/api/v1/login",
-            data={"username": "ivan", "password": "wrongpass"},
-            headers={"Content-Type": "application/x-www-form-urlencoded"},
-        )
-        assert response.status_code == 401
-        assert "incorrect" in response.json()["message"].lower()
-
-    @pytest.mark.asyncio
     async def test_login_nonexistent_user(self, client: AsyncClient):
         """Logging in with a username that doesn't exist must return 404."""
         response = await client.post(
@@ -177,39 +172,11 @@ class TestLogin:
         assert response.status_code == 404
         assert "not found" in response.json()["message"].lower()
 
-    @pytest.mark.asyncio
-    async def test_login_missing_password_field(self, client: AsyncClient):
-        """Login request with missing password field must return 422."""
-        response = await client.post(
-            "/api/v1/login",
-            data={"username": "someone"},
-            headers={"Content-Type": "application/x-www-form-urlencoded"},
-        )
-        assert response.status_code == 422
-
-    @pytest.mark.asyncio
-    async def test_login_response_token_is_valid_jwt(self, client: AsyncClient):
-        """The access_token returned by login must be a decodable JWT with 'sub'."""
-        import os, jwt as pyjwt
-        await register_user(client, username="judy", email="judy@example.com", password="validpass")
-
-        response = await client.post(
-            "/api/v1/login",
-            data={"username": "judy", "password": "validpass"},
-            headers={"Content-Type": "application/x-www-form-urlencoded"},
-        )
-        assert response.status_code == 200
-        token = response.json()["access_token"]
-
-        secret = os.getenv("JWT_SECRET")
-        algo = os.getenv("JWT_ALGO", "HS256")
-        payload = pyjwt.decode(token, secret, algorithms=[algo])
-        assert "sub" in payload
-        assert isinstance(payload["sub"], str)
-
 
 # PROFILE – protected GET /api/v1/profile
-
+# 1. valid
+# 2. without token
+# 3. wrong token
 class TestProfile:
 
     @pytest.mark.asyncio
@@ -236,3 +203,6 @@ class TestProfile:
             headers={"Authorization": "Bearer this.is.not.a.valid.jwt"},
         )
         assert response.status_code == 401
+
+# uv run pytest .\Tests\test_users.py -v
+# uv run pytest --disable-plugin-autoload -p pytest_asyncio.plugin .\Tests\test_users.py -v

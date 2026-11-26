@@ -9,6 +9,7 @@ from app.PII.imports_PII import extract_pii
 
 router = APIRouter()
 
+# Define the query endpoint and handle the RAG processing and PII detection
 
 @router.get("/query")
 async def query_endpoint(

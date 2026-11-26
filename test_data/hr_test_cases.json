@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "input": "What is the annual leave entitlement for full-time employees at XYZ Company?",
+    "expected_output": "Full-time employees at XYZ Company are entitled to paid annual leave as specified in the Leave Policy section of the HR handbook. The exact number of days is defined based on grade and years of service, and must be applied for in advance through the HR system.",
+    "retrieval_context": [
+      "XYZ Company HR Policy and Employee Handbook - Leave Policy: Annual leave entitlement, carry-forward rules, and application procedures are described per grade and tenure. Leave must be approved by the line manager and recorded in the HR system."
+    ],
+    "source": "hr1.pdf",
+    "topic": "Leave Policy"
+  },
+  {
+    "id": 2,
+    "input": "What are the core values of XYZ Company?",
+    "expected_output": "XYZ Company's core values guide employee behavior. The company is committed to integrity, client focus, innovation, collaboration, and excellence as outlined in its HR handbook.",
+    "retrieval_context": [
+      "XYZ Company's vision is to be the most trusted partner for organisations transforming through technology. Its major functions span Engineering, Consulting, Operations, Sales, Finance, HR, Legal, and IT.",
+      "Employees must maintain integrity, confidentiality, and professional conduct at all times as stated in the Code of Conduct section of the HR handbook."
+    ],
+    "source": "hr1.pdf",
+    "topic": "Company Values"
+  },
+  {
+    "id": 3,
+    "input": "What is XYZ Company's policy on gifts received from clients or vendors?",
+    "expected_output": "Gifts with an estimated value above ₹3,000 (INR or equivalent) must be declined or reported to HR. Cash or cash equivalents such as gift cards and vouchers are not permitted to be accepted. Gifts that are accepted and reported may be shared with the team or donated.",
+    "retrieval_context": [
+      "Gifts with an estimated value above 3,000 (INR or equivalent) must be declined or reported to HR and may be shared with the team or donated. Cash or cash equivalents (gift cards, vouchers) must not be accepted."
+    ],
+    "source": "hr1.pdf",
+    "topic": "Gift Policy"
+  },
+  {
+    "id": 4,
+    "input": "What should an employee do if they witness unethical conduct at XYZ?",
+    "expected_output": "Employees are required to report any conduct that is unlawful, unethical, or harmful. The handbook directs employees to cooperate with HR, Audit, Legal, and Security in any investigation. Employees can use the company's whistleblower or grievance reporting channels.",
+    "retrieval_context": [
+      "Report any conduct that is unlawful, unethical or harmful. Cooperation: Employees must cooperate with HR, Audit, Legal and Security in any investigation. Business, client and employee information must be protected in accordance with the Confidentiality section."
+    ],
+    "source": "hr1.pdf",
+    "topic": "Ethics & Conduct"
+  },
+  {
+    "id": 5,
+    "input": "What is the probation period policy at XYZ Company?",
+    "expected_output": "XYZ Company has a Probation and Confirmation Policy. New employees serve a probation period after joining, during which their performance is monitored. Upon successful completion, they receive confirmation of employment. Details on duration and evaluation criteria are covered in the HR handbook.",
+    "retrieval_context": [
+      "10. Probation and Confirmation Policy: New employees are placed on probation and their performance is evaluated before confirmation. The duration and assessment criteria are described in the HR Policy handbook."
+    ],
+    "source": "hr1.pdf",
+    "topic": "Probation Policy"
+  }
+]

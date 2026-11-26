@@ -11,5 +11,4 @@ class State(TypedDict):
     citations: List[str]
     retry_count: int
     error: Optional[str]
-    # Optional: tracks conversational turns when using MemorySaver
     messages: Annotated[list, add_messages]

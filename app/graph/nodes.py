@@ -7,9 +7,13 @@ from flashrank import Ranker, RerankRequest
 from app.schema.state import State
 from app.config.llm import llm
 from app.Ingestion_Pipeline.ingestion import db
-from app.prompt.prompt import HR_PROMPT
+from app.prompt.prompt import HR_PROMPT, REWRITE_PROMPT
+
+
 # Initialize FlashRank once at module level
 ranker = Ranker(model_name="ms-marco-MiniLM-L-12-v2")
+
+
 
 @tool
 def search_knowledge_base(query: str) -> str:
@@ -39,10 +43,7 @@ def rewrite_query_node(state: State) -> Dict[str, Any]:
 
     prompt = ChatPromptTemplate.from_messages([
         (
-            "system",
-            "You are a query rewriting assistant. Given a chat history and the user's latest follow-up question, "
-            "rewrite the question into a single, concise standalone search query for document retrieval. "
-            "Do not answer the question. Return ONLY the rewritten query without quotes or preamble."
+            "system", REWRITE_PROMPT
         ),
         (
             "human",

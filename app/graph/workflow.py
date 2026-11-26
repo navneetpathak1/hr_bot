@@ -56,3 +56,5 @@ def build_rag_graph(checkpointer=None):
 # Shared singleton for persistent conversation memory
 memory = MemorySaver()
 rag_app = build_rag_graph(checkpointer=memory)
+
+

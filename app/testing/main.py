@@ -44,3 +44,7 @@ if __name__ == "__main__":
 
     # Turn 2 (MemorySaver retains context from Turn 1 so 'it' gets rewritten properly)
     ask_question(rag_app, "Can you summarize the key points about it?", thread_id="session_1")
+
+
+# uv run python -m app.testing.main
+

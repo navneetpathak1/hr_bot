@@ -1,0 +1,648 @@
+[
+  {
+    "id": 1,
+    "input": "What is the annual leave entitlement for full-time employees at XYZ Company?",
+    "topic": "Leave Policy",
+    "source": "hr1.pdf",
+    "actual_output": "Based on the provided company policy documents, there is no specific mention of a general \"annual leave\" or \"casual leave\" entitlement for full-time employees.\n\nThe context does specify the following leave-related entitlements:\n*   **Maternity Leave:** 26 weeks of paid leave for the first two children, or 12 weeks for a third or subsequent child, for eligible women employees [1].\n*   **Public Holidays:** 14 paid holidays per calendar year, which include national holidays, major festivals, and optional days [3].\n\nHowever, the specific number of days for standard annual leave is not detailed in the provided text.\n\nI don't have enough information in the company policy documents to answer that.",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "input": "What are the core values of XYZ Company?",
+    "topic": "Company Values",
+    "source": "hr1.pdf",
+    "actual_output": "Based on the provided company policy documents, the specific list of \"Core Values\" is not explicitly detailed in a dedicated section. However, the documents highlight several key principles and commitments that reflect the company's values:\n\n*   **Integrity and Ethics:** Integrity is identified as a core value, with an expectation for all employees to act honestly and fairly, even when unobserved [1].\n*   **Honesty and Transparency:** Employees are expected to provide accurate information in all reports, communications, and records, and to avoid falsifying or altering data [1].\n*   **Doing the Right Thing:** The company emphasizes a disciplined approach to doing the right thing, even when it is difficult [4].\n*   **Commitment to Employees:** XYZ commits to providing a safe, healthy, and inclusive workplace free from harassment and discrimination, ensuring fair pay, transparent merit-based career progression, opportunities for growth, respect for work-life balance, and open channels for feedback [3].\n\nThe documents state that the company's growth rests on the quality of its people, client trust, and this disciplined ethical approach [4].",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "input": "What is XYZ Company's policy on gifts received from clients or vendors?",
+    "topic": "Gift Policy",
+    "source": "hr1.pdf",
+    "actual_output": "Based on the provided company policy documents, XYZ Company has specific guidelines regarding gifts, hospitality, and entertainment to prevent conflicts of interest and maintain ethical standards.\n\n**Key Policy Points:**\n\n1.  **Prohibition on Solicitation:** Employees are strictly prohibited from soliciting (asking for or seeking out) gifts or favors from clients, vendors, or candidates [2].\n2.  **Restrictions on Acceptance:** Employees must not accept \"lavish\" gifts or hospitality from vendors or clients [1]. While the text does not define a specific monetary threshold for what constitutes \"lavish,\" it explicitly lists this as a prohibited conflict of interest category.\n3.  **General Ethical Standards:** The policy emphasizes that employees must not mislead clients or colleagues and should disclose issues promptly, which supports the broader integrity framework under which gift policies operate [3].\n\n**Summary:**\nYou should not ask for gifts from clients or vendors. Additionally, you must avoid accepting gifts or hospitality that are considered lavish. If you are unsure whether a gift is appropriate, it is best to consult with your manager or HR, as the policy aims to prevent any appearance of impropriety or conflict of interest.\n\n**Sources:**\n[1] hr2.pdf, Page: 19\n[2] hr1.pdf, Page: 4\n[3] hr1.pdf, Page: 34",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 4,
+    "input": "What should an employee do if they witness unethical conduct at XYZ?",
+    "topic": "Ethics & Conduct",
+    "source": "hr1.pdf",
+    "actual_output": "If an employee witnesses unethical conduct at XYZ, they should take the following steps based on company policy:\n\n1.  **Report the Concern:** Employees are encouraged to report genuine concerns about serious wrongdoing, such as fraud, corruption, safety violations, harassment, or financial irregularities [1].\n2.  **Choose a Reporting Channel:** Reports can be made through the Ethics Helpline at ethics@xyz-company.example or directly to the Chair of the Audit Committee [1].\n3.  **Consider Anonymity:** Reports can be submitted anonymously if preferred [1].\n4.  **Act in Good Faith:** XYZ prohibits retaliation against anyone who reports concerns in good faith, and reports are investigated promptly [1].\n\nAdditionally, general ethical standards require employees to act honestly and fairly, disclose errors or issues promptly rather than hiding them, and avoid misleading colleagues or clients about capabilities, status, or risks [2][4].",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 5,
+    "input": "What is the probation period policy at XYZ Company?",
+    "topic": "Probation Policy",
+    "source": "hr1.pdf",
+    "actual_output": "Based on the provided company policy documents, here is the information regarding the probation period policy at XYZ Company:\n\n**Purpose of Probation**\nThe probation period is designed to allow both the Company and the employee to assess mutual suitability. During this time, the employee learns the role, while the Company evaluates the employee's performance, conduct, and cultural fit [3].\n\n**Resignation During Probation**\nIf an employee chooses to resign during the probation period, they are required to provide 15 days' written notice. The Company retains the discretion to waive or shorten this notice period [1].\n\n**Scope**\nThe probation policy applies to all permanent, probationary, fixed-term, part-time, and intern employees across all offices, branches, and remote locations, unless a specific section states otherwise [2].\n\n**Note on Duration**\nThe provided context does not specify the exact length (e.g., number of months) of the standard probation period. It only details the purpose of the period and the notice requirements for resignation during it.",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 6,
+    "input": "How does XYZ Company handle salary and payroll?",
+    "topic": "Payroll",
+    "source": "hr1.pdf",
+    "actual_output": "I don't have enough information in the company policy documents to answer that.",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 7,
+    "input": "What is XYZ Company's performance evaluation process?",
+    "topic": "Performance",
+    "source": "hr1.pdf",
+    "actual_output": "Based on the provided company policy documents, I don't have enough information in the company policy documents to answer that.\n\nThe available context mentions that performance ratings (such as \"Needs Improvement\") impact eligibility for promotion or internal transfer [2], and that appraisal documents are confidential [3]. However, the specific steps, frequency, methods, or detailed process of the performance evaluation itself are not described in the provided text.",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 8,
+    "input": "Does XYZ Company allow employees to work from home?",
+    "topic": "Work from Home",
+    "source": "hr1.pdf",
+    "actual_output": "Yes, XYZ Company allows employees to work from home, but it depends on your specific work model. The company has a Work-from-Home and Hybrid Work Policy that outlines different frameworks for remote and hybrid work [2].\n\nHere are the details regarding work models:\n\n*   **Hybrid Model:** Employees in this model are required to work from the office at least 3 days a week and can work remotely up to 2 days a week [2].\n*   **Office-based Model:** Employees in roles requiring physical presence (such as security, facilities, or lab roles) work from the office five days a week and are not eligible for remote work under this model [2].\n\nAdditionally, during outbreaks of infectious conditions, the Company may require temporary measures such as remote working as a precaution [1].\n\nTo determine if you are eligible to work from home, you should check which work model applies to your specific role.",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 9,
+    "input": "What is XYZ Company's commitment to workplace safety?",
+    "topic": "Workplace Safety",
+    "source": "hr2.pdf",
+    "actual_output": "XYZ Company is committed to providing a safe, healthy, and inclusive workplace that is free from harassment and discrimination [1][2]. The company emphasizes that safety is everyone's responsibility and maintains the principle that no task is so urgent that it justifies unsafe work [1].\n\nTo support this commitment, XYZ provides:\n*   Resources, policies, training, and a safe environment through management [1].\n*   Regular inspections, drills, risk assessments, and incident investigations conducted by the Health and Safety Officer [1].\n*   Workplace health support, including ergonomic assessments, annual health check-ups, clean drinking water and sanitation, wellness programs, and mental health support [3].\n\nAdditionally, the company commits to respecting work-life balance and personal wellbeing, and ensures open channels for feedback and honest communication regarding matters that affect employees [2].",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 10,
+    "input": "What should an employee do in case of a medical emergency at the XYZ office?",
+    "topic": "Medical Emergencies",
+    "source": "hr2.pdf",
+    "actual_output": "Based on the provided company policy documents, here is what an employee should do or be aware of in the context of a medical emergency or health-related incident:\n\n1.  **Report Hazards and Follow Instructions:** Employees are required to report any hazards and follow instructions given by the company during emergencies [2].\n2.  **Ensure Contact Details are Updated:** To facilitate emergency response, employees must keep their contact details and emergency contacts updated in the HR portal [1].\n3.  **Check In When Requested:** Employees should check in using the company app or call the helpline when requested, which may be part of emergency communication protocols [1].\n4.  **Receive Support:** If an employee is affected by an emergency (which includes medical incidents), the Company will provide support. This includes:\n    *   Medical care\n    *   Counselling through the Employee Assistance Program (EAP)\n    *   Flexible leave\n    *   Help for families [4].\n5.  **Infectious Conditions:** If the medical emergency involves an infectious condition, the employee is advised to stay at home [1].\n\n**Note:** The provided context does not specify a step-by-step procedure for immediate first aid response (such as who to call first for on-site first aid or specific internal emergency numbers other than general police numbers). For immediate on-site medical assistance, employees should refer to specific emergency contact lists or signage within the office, as the provided text only lists general emergency contacts like Police (100 or 112) [4].",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 11,
+    "input": "Are contractors required to follow XYZ Company's safety rules?",
+    "topic": "Contractors",
+    "source": "hr2.pdf",
+    "actual_output": "Yes, contractors are required to follow XYZ Company's safety rules.\n\nAccording to the company policy, while contractors are primarily governed by their individual contracts, they must adhere to the Company's safety, confidentiality, IT, and conduct provisions [1]. Specifically, contractors working on Company premises are required to:\n*   Comply with safety rules.\n*   Wear identification.\n*   Undergo induction [2].\n\nAdditionally, the general commitment to workplace safety states that safety is everyone's responsibility [3].",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 12,
+    "input": "What is XYZ Company's clean desk policy?",
+    "topic": "Information Security",
+    "source": "hr2.pdf",
+    "actual_output": "I don't have enough information in the company policy documents to answer that.",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 13,
+    "input": "What are the rules for remote access to XYZ Company's systems?",
+    "topic": "IT Security",
+    "source": "hr2.pdf",
+    "actual_output": "Based on the provided company policy documents, here are the rules regarding remote access to XYZ Company's systems:\n\n**1. Scope of Devices and Resources**\nThe policies apply to all IT resources used to access Company systems, including networks, software, email, cloud services, collaboration tools, storage, and **any personal device** used for this purpose [1].\n\n**2. Ownership and Acceptable Use**\n*   **Ownership:** All IT resources and the information stored on them belong to XYZ [1].\n*   **Primary Use:** These resources are provided for business use [1].\n*   **Personal Use:** Limited personal use is permitted only if it meets all the following conditions:\n    *   It is reasonable.\n    *   It does not interfere with work or security.\n    *   It is lawful.\n    *   It is not for personal commercial gain [1].\n\n**3. Prohibited Activities**\nThe context explicitly states that employees must not engage in certain prohibited activities regarding IT resources, but the specific list of prohibited activities is not detailed in the provided text [1].\n\n**4. Eligibility and Work Models**\n*   **Applicability:** The Work-from-Home and Hybrid Work Policy applies to all permanent, probationary, fixed-term, part-time, and intern employees across all offices, branches, and remote locations [2].\n*   **Hybrid Model:** Employees in hybrid roles are expected to work from the office at least 3 days a week and remotely up to 2 days [3].\n*   **Office-Based Roles:** Roles requiring physical presence (such as security, facilities, or lab work) are office-based and work from the office five days a week [3].\n\n**Note:** The provided context does not contain specific technical security requirements (such as password complexity, multi-factor authentication, or encryption standards) for remote access, nor does it list the specific prohibited activities mentioned in section 19.3. For those details, you would need to consult the full IT Security Policy or the complete Employee Handbook.",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 14,
+    "input": "What are examples of gross misconduct that could lead to termination at XYZ?",
+    "topic": "Disciplinary",
+    "source": "hr2.pdf",
+    "actual_output": "Based on the company policy documents, examples of gross misconduct that can lead to termination of service include:\n\n*   Theft\n*   Fraud\n*   Forgery\n*   Bribery\n*   Corruption\n*   Sexual harassment\n*   Violence or threats\n*   Possession of weapons\n*   Being under the influence of drugs or alcohol at work\n*   Serious breach of data privacy or confidentiality\n*   Deliberate damage to Company property\n*   Wilful misconduct (the text cuts off at \"wilful,\" but lists it as a category) [2]\n\nThe policy states that termination for gross misconduct may be with immediate effect and without notice [2]. Additionally, the disciplinary steps table confirms that termination of service is the prescribed action for gross misconduct or repeated major misconduct [3].",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 15,
+    "input": "How should employees handle phishing emails at XYZ Company?",
+    "topic": "Cybersecurity",
+    "source": "hr2.pdf",
+    "actual_output": "Employees at XYZ Company should handle phishing emails by following these specific steps outlined in the company's security policies:\n\n1.  **Do Not Interact:** If an email or message appears suspicious, do not click on any links or open any attachments [1].\n2.  **Report the Incident:** You must report the suspicious email using one of the following methods:\n    *   Click the \"Report Phishing\" button, or\n    *   Send a report to security@xyz-company.example [1].\n3.  **Stay Alert:** Employees are required to remain vigilant against phishing, social engineering, and malware threats [1].\n\nAdditionally, the Company conducts regular phishing simulations and awareness training to help employees recognize these threats [1].",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 16,
+    "input": "Can employees use the company email for personal communication?",
+    "topic": "IT Policy",
+    "source": "hr2.pdf",
+    "actual_output": "Based on the provided company policy documents, company email is designated strictly for business communication [1]. The policy explicitly prohibits employees from auto-forwarding company email to personal accounts [1]. While the text does not explicitly state that *all* personal communication is banned, it mandates that the email be used for business purposes and requires professional language [1]. Therefore, using company email for personal communication is not in line with the stated policy that it is for business communication.",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 17,
+    "input": "What three questions should an employee ask themselves before taking any action per the Code of Conduct?",
+    "topic": "Code of Conduct",
+    "source": "hr1.pdf",
+    "actual_output": "According to the Employee Code of Conduct, when in doubt about a situation, an employee should ask themselves the following three questions:\n\n1.  Is it legal?\n2.  Is it consistent with our values and policies?\n3.  Would I be comfortable explaining it to my manager, my family, and my clients?\n\nIf the answer to any of these questions is \"no,\" the policy advises that the employee should not proceed and should instead seek guidance [1][3].",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 18,
+    "input": "What must employees do with intellectual property created during employment at XYZ?",
+    "topic": "Intellectual Property",
+    "source": "hr2.pdf",
+    "actual_output": "Based on the company policy documents, employees must assign all work, inventions, designs, software, documents, and other creations made in the course of employment or using Company resources to XYZ, as these items belong to the company [1]. Additionally, employees are required to respect company property, including intellectual property, by using it only for intended business purposes [4].",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  },
+  {
+    "id": 19,
+    "input": "What is XYZ Company's password management policy?",
+    "topic": "IT Security",
+    "source": "hr2.pdf",
+    "actual_output": "I don't have enough information in the company policy documents to answer that.",
+    "scores": {
+      "contextual_precision": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "contextual_recall": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      },
+      "answer_relevancy": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'statements'"
+      },
+      "faithfulness": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'truths'"
+      },
+      "hallucination": {
+        "score": null,
+        "passed": false,
+        "reason": "'str' object has no attribute 'verdicts'"
+      }
+    }
+  }
+]

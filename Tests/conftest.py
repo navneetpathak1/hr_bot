@@ -166,7 +166,7 @@ def auth_header(token: str) -> dict[str, str]:
 async def auth_headers(client: AsyncClient) -> dict[str, str]:
     """
     Registers a fresh user for the current test, logs in, and returns the
-    Authorization header dict – ready to pass to `client.get(...)`.
+    Authorization header dict - ready to pass to `client.get(...)`.
     """
     await register_user(client)
     token = await login_user(client)

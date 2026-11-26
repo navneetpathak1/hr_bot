@@ -21,10 +21,12 @@ import jwt
 
 router = APIRouter()
 ph = PasswordHasher()
+
 oauth2_scheme = OAuth2PasswordBearer(
     tokenUrl="api/v1/login"
 )
 
+# register route
 @router.post("/register", response_model=AuthResponse, status_code=status.HTTP_201_CREATED)
 async def register(
     user: UserCreate,
@@ -77,6 +79,8 @@ async def register(
         "user": new_user
     }
 
+# /login route
+
 @router.post("/login", response_model=AuthResponse)
 async def login(username: Annotated[str, Form()],
     password: Annotated[str, Form()], 
@@ -120,7 +124,7 @@ async def login(username: Annotated[str, Form()],
         "user": user_exist
     }
 
-
+# authentication dependency
 async def get_current_user(
     token: Annotated[str, Depends(oauth2_scheme)],
     db: Annotated[AsyncSession, Depends(get_db)]
@@ -158,7 +162,7 @@ async def get_current_user(
 
     return current_user
 
-
+# profile route
 @router.get("/profile")
 async def profile(
     current_user: Annotated[User, Depends(get_current_user)]
